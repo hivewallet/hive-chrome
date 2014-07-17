@@ -1,0 +1,8 @@
+{
+  "name": "hive-origin",
+  "version": "0.0.0",
+  "description": "Get/set the base address for HTTP requests to the server (default = location.origin)",
+  "main": "index.js",
+  "author": "Kuba Suder",
+  "license": "GPL-3.0"
+}
