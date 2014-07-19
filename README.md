@@ -17,9 +17,13 @@ This is a fork of [hive-js](https://github.com/hivewallet/hive-js) adapted as a 
 
     NODE_ENV=production DB_HOST=hive.cloudant.com PROXY_URL=https://hive-proxy.herokuapp.com gulp chrome-watch
 
+On Chrome Extensions page, select "Developer mode" and use "Load unpacked extension" to load the extension from the `build` subdirectory.
+
 ### Building a production version for the production server
 
-TODO
+    NODE_ENV=production HIVE_ENV=production DB_HOST=hivewallet.cloudant.com PROXY_URL=https://hive-proxy.herokuapp.com gulp chrome-build
+
+Then either use the "Extensions" page in Chrome to pack the extension into a `.crx` file, or use the [Chrome Developer Dashboard](https://chrome.google.com/webstore/developer/dashboard) to submit it to the Chrome Web Store. The `.crx` can be installed by manually dragging it to the Extensions page.
 
 ## Contributing
 

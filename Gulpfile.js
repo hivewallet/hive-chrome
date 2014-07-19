@@ -79,7 +79,7 @@ gulp.task('tests', function(){
 
 function bundle(bundler, outFilename){
   bundler = bundler.transform('ractify')
-  if(process.env.GULP_ENV === "production") {
+  if(process.env.HIVE_ENV === "production") {
     bundler = bundler.transform({global: true}, 'uglifyify')
   }
 

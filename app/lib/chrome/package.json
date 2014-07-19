@@ -4,5 +4,8 @@
   "description": "Custom setup for the Chrome app during initialization",
   "main": "index.js",
   "author": "Kuba Suder",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "browserify": {
+    "transform": ["envify"]
+  }
 }
