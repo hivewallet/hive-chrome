@@ -25,7 +25,7 @@ var containerEl = document.getElementById('loader')
 var keyEl = document.getElementById('logo_key')
 var goodToGo;
 
-animateLogo(elems)
+containerEl.style.display = 'none'
 
 Modernizr.on('indexeddb', function(hasIndexedDB){
   var supportsPouchDB = hasIndexedDB || Modernizr.websqldatabase
@@ -39,9 +39,7 @@ Modernizr.on('indexeddb', function(hasIndexedDB){
     },
     complete: function() {
       if(goodToGo) {
-        setTimeout(function(){
-          fadeOut(containerEl, keyEl)
-        }, 1000)
+        window.initHiveApp()
       }
     }
   })
