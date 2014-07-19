@@ -1,5 +1,8 @@
 'use strict';
 window.initHiveApp = function() {
+  var chrome = require('hive-chrome')
+  chrome.beforeRequiringModules()
+
   var Ticker = require('hive-ticker-api').BitcoinAverage
   var emitter = require('hive-emitter')
   var walletExists = require('hive-wallet').walletExists

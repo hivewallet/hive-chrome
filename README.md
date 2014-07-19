@@ -1,62 +1,31 @@
-hive-js
+hive-chrome
 =======
 
-Work in progress
+Work in progress.
+
+This is a fork of [hive-js](https://github.com/hivewallet/hive-js) adapted as a Chrome extension. Main development happens in the original hive-js repo.
 
 ## Development
 
 ### Grab the source
 
-    git clone git@github.com:hivewallet/hive-js.git
-    cd hive-js
+    git clone git@github.com:hivewallet/hive-chrome.git
+    cd hive-chrome
     npm install
 
-### Setup CouchDB
+### Running the extension locally with the staging server
 
-    brew install couchdb
+    NODE_ENV=production DB_HOST=hive.cloudant.com PROXY_URL=https://hive-proxy.herokuapp.com gulp chrome-watch
 
-__Enable CORS__
+### Building a production version for the production server
 
-add the following config in `/usr/local/etc/couchdb/local.ini`:
-
-    [httpd]
-    enable_cors = true
-
-    [cors]
-    credentials = true
-    origins = http://localhost:8080
-    headers = accept, authorization, content-type, origin
-
-If you want to be able to access the app from a mobile device on your local network, remember to add your host machine IP or alias to the cors origins list.
-
-    origins = http://localhost:8080, http://192.168.1.109:8080, http://alice-computer.local:8080
-
-__Start CouchDB__
-
-    # start couchdb upon login
-    ln -sfv /usr/local/opt/couchdb/*.plist ~/Library/LaunchAgents
-    # kick it off
-    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist
-    open http://127.0.0.1:5984/_utils/index.html
-
-Click on the bottom link "fix this" to create an admin user, say:
-
-    username: admin
-    password: password
-
-### Profit
-
-    DB_HOST=127.0.0.1 DB_PORT=5984 DB_USER=admin DB_PASSWORD=password COOKIE_SALT=secret PROXY_URL=https://hive-proxy.herokuapp.com npm run dev
-    open http://localhost:8080
-
-### Live Reload (Optional)
-
-This project has js & css live reload setup. If you wish to use it to boost your productivity, head over to chrome store and download [the LiveReload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei). After turning it on, you'd never need to hit the refresh button anymore.
+TODO
 
 ## Contributing
 
 ### Instructions
 
+0. Make sure you want to make a change that's only relevant to hive-chrome, not to hive-js in general :)
 1. Fork the repo
 2. Push changes to your fork
 3. Create a pull request

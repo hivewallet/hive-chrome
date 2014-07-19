@@ -79,7 +79,7 @@ gulp.task('tests', function(){
 
 function bundle(bundler, outFilename){
   bundler = bundler.transform('ractify')
-  if(process.env.NODE_ENV === "production") {
+  if(process.env.GULP_ENV === "production") {
     bundler = bundler.transform({global: true}, 'uglifyify')
   }
 
@@ -101,6 +101,7 @@ gulp.task('watch', function() {
   gulp.watch(['app/**/*.js', 'app/**/*.json', 'app/**/*.ract', '!app/**/node_modules/**/*', '!app/loader/**'], ['scripts', 'tests']);
   gulp.watch(['app/loader/**.js'], ['loader', 'tests']);
   gulp.watch('app/assets/**/*', ['assets']);
+  gulp.watch('chrome/**/*', ['chrome-assets']);
   gulp.watch('app/index.html', ['html']);
   gulp.watch(['app/**/test/*.js', '!app/**/node_modules/**/*'], ['tests']);
 
@@ -119,6 +120,16 @@ gulp.task('sketch', function() {
 // $ gulp build --------------------------- //
 
 gulp.task('build', ['html', 'loader', 'scripts', 'styles', 'assets']);
+
+// chrome stuff --------------------------- //
+
+gulp.task('chrome-assets', ['clean-assets'], function() {
+  gulp.src('./chrome/**/*')
+    .pipe(gulp.dest('./build'));
+});
+
+gulp.task('chrome-build', ['build', 'chrome-assets']);
+gulp.task('chrome-watch', ['chrome-build', 'watch']);
 
 // $ gulp ---------------------------------- //
 

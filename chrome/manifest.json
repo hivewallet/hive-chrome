@@ -1,0 +1,43 @@
+{
+  "name": "Hive",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "A human-friendly digital currency wallet",
+  "homepage_url": "https://hivewallet.com",
+
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'none'",
+
+  "externally_connectable": {
+    "ids": []
+  },
+
+  "permissions": [
+    "alarms",
+    "clipboardWrite",
+    "geolocation",
+    "notifications",
+    "https://*.hivewallet.com/",
+    "https://*.herokuapp.com/",
+    "https://*.cloudant.com/"
+  ],
+
+  "background": {
+    "scripts": ["assets/js/background.js"],
+    "persistent": true
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "19": "assets/icons/toolbar-icon-19.png",
+      "38": "assets/icons/toolbar-icon-38.png"
+    },
+    "default_title": "Hive",
+    "default_popup": "index.html"
+  }
+}
