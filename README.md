@@ -34,20 +34,26 @@ Then either use the "Extensions" page in Chrome to pack the extension into a `.c
 2. Push changes to your fork
 3. Create a pull request
 
+Note: please make changes in the least invasive way possible (e.g. add new files/sections instead of modifying existing files/sections), to minimize the amount of potential merge conflicts when pulling upstream changes.
 
-### Running the test suite
+### Working with upstream
 
-    # run both server and client tests
-    DB_HOST=127.0.0.1 DB_PORT=5984 DB_USER=admin DB_PASSWORD=password COOKIE_SALT=secret npm test
+Preferred way of working with local and upstream branches:
 
-    # just server
-    DB_HOST=127.0.0.1 DB_PORT=5984 DB_USER=admin DB_PASSWORD=password COOKIE_SALT=secret npm run test-server
+- the main branch of the chrome version is `master`
+- chrome-specific changes go to `master` (or to feature branches which are merged to master later)
+- the `upstream` branch tracks the latest stable upstream version
+- to pull a new version:
 
-    # just client
-    npm run test-client
+        # only first time
+        git remote add upstream git@github.com:hivewallet/hive-js.git
+        git branch upstream --track origin/upstream
 
-### Testing deployment inside Vagrant
-
-1. [Install Vagrant](http://www.vagrantup.com/downloads.html)
-2. symlink the playbook file into place: `ln -s path/to/ansible/repo provisioners`
-3. `vagrant up` or `vagrant reload --provision`
+        git fetch upstream
+        git checkout upstream
+        git merge <whatever_is_the_latest_stable_tag>
+        git push
+        git checkout master
+        git merge upstream
+        # ... work through any merge conflicts, check if it works etc.
+        git push
